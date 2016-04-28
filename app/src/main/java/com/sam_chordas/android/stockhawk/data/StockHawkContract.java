@@ -55,6 +55,10 @@ public class StockHawkContract {
 
         @DataType(DataType.Type.TEXT)
         @NotNull
+        public static final String Date = "date";
+
+        @DataType(DataType.Type.TEXT)
+        @NotNull
         public static final String OPEN = "open";
 
         @DataType(DataType.Type.TEXT)
