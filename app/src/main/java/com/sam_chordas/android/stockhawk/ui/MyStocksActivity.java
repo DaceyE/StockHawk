@@ -72,6 +72,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
         if (savedInstanceState == null) {
             // Run the initialize task service so that some stocks appear upon an empty database
             mServiceIntent.putExtra("tag", "init");
+            mServiceIntent.putExtra("getHistorical", true);
             if (isConnected) {
                 startService(mServiceIntent);
             } else {
@@ -87,7 +88,6 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                 new RecyclerViewItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View v, int position) {
-                        Log.e("onItemClick: ", "Itemssss");
                         Intent intent = new Intent(mContext, DetailStockActivity.class);
                         startActivity(intent);
                     }
@@ -123,7 +123,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                                         // Add the stock to DB
                                         mServiceIntent.putExtra("tag", "add");
                                         mServiceIntent.putExtra("symbol", input.toString());
-                                        mServiceIntent.putExtra("bool", true);
+                                        mServiceIntent.putExtra("getHistorical", true);
                                         startService(mServiceIntent);
                                     }
                                 }
