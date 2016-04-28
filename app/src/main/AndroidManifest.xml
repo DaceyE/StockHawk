@@ -36,12 +36,29 @@
             </intent-filter>
         </service>
         <service android:name=".service.StockIntentService" />
+        <service
+            android:name=".service.HistoricalDataTaskService"
+            android:exported="true"
+            android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE">
+            <intent-filter>
+                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY" />
+            </intent-filter>
+        </service>
+        <service android:name=".service.StockIntentService" />
 
         <provider
             android:name=".data.generated.StockHawkProvider"
             android:authorities="com.sam_chordas.android.stockhawk.data.StockHawkProvider"
             android:exported="false" />
 
+        <activity
+            android:name=".ui.DetailStockActivity"
+            android:label="@string/title_activity_detail_stock"
+            android:parentActivityName=".ui.MyStocksActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sam_chordas.android.stockhawk.ui.MyStocksActivity" />
+        </activity>
     </application>
 
 </manifest>
