@@ -2,8 +2,10 @@ package com.sam_chordas.android.stockhawk.rest;
 
 import android.content.ContentProviderOperation;
 import android.util.Log;
-import com.sam_chordas.android.stockhawk.data.QuoteColumns;
-import com.sam_chordas.android.stockhawk.data.QuoteProvider;
+
+import com.sam_chordas.android.stockhawk.data.StockHawkContract;
+import com.sam_chordas.android.stockhawk.data.StockHawkProvider;
+
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -72,19 +74,19 @@ public class Utils {
 
   public static ContentProviderOperation buildBatchOperation(JSONObject jsonObject){
     ContentProviderOperation.Builder builder = ContentProviderOperation.newInsert(
-        QuoteProvider.Quotes.CONTENT_URI);
+        StockHawkProvider.Quotes.CONTENT_URI);
     try {
       String change = jsonObject.getString("Change");
-      builder.withValue(QuoteColumns.SYMBOL, jsonObject.getString("symbol"));
-      builder.withValue(QuoteColumns.BIDPRICE, truncateBidPrice(jsonObject.getString("Bid")));
-      builder.withValue(QuoteColumns.PERCENT_CHANGE, truncateChange(
+      builder.withValue(StockHawkContract.QoutesColumns.SYMBOL, jsonObject.getString("symbol"));
+      builder.withValue(StockHawkContract.QoutesColumns.BIDPRICE, truncateBidPrice(jsonObject.getString("Bid")));
+      builder.withValue(StockHawkContract.QoutesColumns.PERCENT_CHANGE, truncateChange(
           jsonObject.getString("ChangeinPercent"), true));
-      builder.withValue(QuoteColumns.CHANGE, truncateChange(change, false));
-      builder.withValue(QuoteColumns.ISCURRENT, 1);
+      builder.withValue(StockHawkContract.QoutesColumns.CHANGE, truncateChange(change, false));
+      builder.withValue(StockHawkContract.QoutesColumns.ISCURRENT, 1);
       if (change.charAt(0) == '-'){
-        builder.withValue(QuoteColumns.ISUP, 0);
+        builder.withValue(StockHawkContract.QoutesColumns.ISUP, 0);
       }else{
-        builder.withValue(QuoteColumns.ISUP, 1);
+        builder.withValue(StockHawkContract.QoutesColumns.ISUP, 1);
       }
 
     } catch (JSONException e){

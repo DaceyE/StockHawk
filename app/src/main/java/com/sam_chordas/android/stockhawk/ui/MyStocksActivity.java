@@ -22,8 +22,8 @@ import android.view.View;
 import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.sam_chordas.android.stockhawk.R;
-import com.sam_chordas.android.stockhawk.data.QuoteColumns;
-import com.sam_chordas.android.stockhawk.data.QuoteProvider;
+import com.sam_chordas.android.stockhawk.data.StockHawkContract;
+import com.sam_chordas.android.stockhawk.data.StockHawkProvider;
 import com.sam_chordas.android.stockhawk.rest.QuoteCursorAdapter;
 import com.sam_chordas.android.stockhawk.rest.RecyclerViewItemClickListener;
 import com.sam_chordas.android.stockhawk.rest.Utils;
@@ -103,8 +103,8 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                 @Override public void onInput(MaterialDialog dialog, CharSequence input) {
                   // On FAB click, receive user input. Make sure the stock doesn't already exist
                   // in the DB and proceed accordingly
-                  Cursor c = getContentResolver().query(QuoteProvider.Quotes.CONTENT_URI,
-                      new String[] { QuoteColumns.SYMBOL }, QuoteColumns.SYMBOL + "= ?",
+                  Cursor c = getContentResolver().query(StockHawkProvider.Quotes.CONTENT_URI,
+                      new String[] { StockHawkContract.QoutesColumns.SYMBOL }, StockHawkContract.QoutesColumns.SYMBOL + "= ?",
                       new String[] { input.toString() }, null);
                   if (c.getCount() != 0) {
                     Toast toast =
@@ -195,7 +195,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     if (id == R.id.action_change_units){
       // this is for changing stock changes from percent value to dollar value
       Utils.showPercent = !Utils.showPercent;
-      this.getContentResolver().notifyChange(QuoteProvider.Quotes.CONTENT_URI, null);
+      this.getContentResolver().notifyChange(StockHawkProvider.Quotes.CONTENT_URI, null);
     }
 
     return super.onOptionsItemSelected(item);
@@ -204,10 +204,10 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
   @Override
   public Loader<Cursor> onCreateLoader(int id, Bundle args){
     // This narrows the return to only the stocks that are most current.
-    return new CursorLoader(this, QuoteProvider.Quotes.CONTENT_URI,
-        new String[]{ QuoteColumns._ID, QuoteColumns.SYMBOL, QuoteColumns.BIDPRICE,
-            QuoteColumns.PERCENT_CHANGE, QuoteColumns.CHANGE, QuoteColumns.ISUP},
-        QuoteColumns.ISCURRENT + " = ?",
+    return new CursorLoader(this, StockHawkProvider.Quotes.CONTENT_URI,
+        new String[]{ StockHawkContract.QoutesColumns._ID, StockHawkContract.QoutesColumns.SYMBOL, StockHawkContract.QoutesColumns.BIDPRICE,
+            StockHawkContract.QoutesColumns.PERCENT_CHANGE, StockHawkContract.QoutesColumns.CHANGE, StockHawkContract.QoutesColumns.ISUP},
+        StockHawkContract.QoutesColumns.ISCURRENT + " = ?",
         new String[]{"1"},
         null);
   }
