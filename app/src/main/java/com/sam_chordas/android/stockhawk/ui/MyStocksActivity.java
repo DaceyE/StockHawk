@@ -69,7 +69,10 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
         // The intent service is for executing immediate pulls from the Yahoo API
         // GCMTaskService can only schedule tasks, they cannot execute immediately
         mServiceIntent = new Intent(this, StockIntentService.class);
-        if (savedInstanceState == null) {
+        int numberOfRows = getContentResolver().query(StockHawkProvider.Quotes.CONTENT_URI,
+                new String[]{StockHawkContract.QoutesColumns._ID}, null, null, null)
+                .getCount();
+        if (numberOfRows <= 0) {
             // Run the initialize task service so that some stocks appear upon an empty database
             mServiceIntent.putExtra("tag", "init");
             mServiceIntent.putExtra("getHistorical", true);
