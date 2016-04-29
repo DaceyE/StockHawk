@@ -15,7 +15,7 @@ import com.google.android.gms.gcm.TaskParams;
  */
 public class StockIntentService extends IntentService {
 
-    private String LOG_TAG = StockIntentService.class.getSimpleName();
+    private String LOG_TAG = "stockhawk " + StockIntentService.class.getSimpleName();
 
     public StockIntentService() {
         super(StockIntentService.class.getName());

@@ -8,6 +8,7 @@ import com.sam_chordas.android.stockhawk.R;
 
 public class DetailStockActivity extends AppCompatActivity {
 
+    private String LOG_TAG = "stockhawk " + DetailStockActivity.class.getSimpleName();
     public static final String SYMBOL = "com.sam_chordas.android.stockhawk.ui.SYMBOL";
 
     @Override
@@ -20,7 +21,7 @@ public class DetailStockActivity extends AppCompatActivity {
         String symbol = getIntent().getExtras().getString(SYMBOL);
         DetailStockFragment fragment = (DetailStockFragment) getFragmentManager()
                 .findFragmentById(R.id.fragment);
-        Log.e("stuff", symbol);
+        Log.e(LOG_TAG, symbol);
         fragment.setSymbol(symbol);
     }
 

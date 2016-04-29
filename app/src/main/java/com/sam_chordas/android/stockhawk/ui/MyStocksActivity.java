@@ -50,6 +50,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     private Intent mServiceIntent;
     private ItemTouchHelper mItemTouchHelper;
     private static final int CURSOR_LOADER_ID = 0;
+    private String LOG_TAG = "stockhawk " + MyStocksActivity.class.getSimpleName();
     private QuoteCursorAdapter mCursorAdapter;
     private Context mContext;
     private Cursor mCursor;

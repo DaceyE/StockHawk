@@ -26,7 +26,7 @@ import java.net.URLEncoder;
  */
 public class HistoricalDataTaskService extends GcmTaskService {
 
-    private String LOG_TAG = HistoricalDataTaskService.class.getSimpleName();
+    private String LOG_TAG = "stackhawk " + HistoricalDataTaskService.class.getSimpleName();
 
     private OkHttpClient client = new OkHttpClient();
     private Context mContext;
