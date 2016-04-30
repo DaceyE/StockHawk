@@ -65,7 +65,7 @@ public class HistoricalDataTaskService extends GcmTaskService {
             e.printStackTrace();
         }
         if (params.getTag().equals("init") || params.getTag().equals("periodic")) {
-            initQueryCursor = mContext.getContentResolver().query(StockHawkProvider.Quotes.CONTENT_URI,
+            initQueryCursor = mContext.getContentResolver().query(StockHawkProvider.HistoricalData.CONTENT_URI,
                     new String[]{"Distinct " + StockHawkContract.QoutesColumns.SYMBOL}, null,
                     null, null);
             if (initQueryCursor.getCount() == 0 || initQueryCursor == null) {
@@ -124,6 +124,12 @@ public class HistoricalDataTaskService extends GcmTaskService {
             try {
                 getResponse = fetchData(urlString);
                 result = GcmNetworkManager.RESULT_SUCCESS;
+
+                //deletes the old data if it was a periodic
+                if(params.getTag().equals("periodic")){
+                    Utils.clearTable(StockHawkProvider.HistoricalData.CONTENT_URI, mContext);
+                }
+
                 try {
                     mContext.getContentResolver().applyBatch(StockHawkProvider.AUTHORITY,
                             Utils.historicalDataJsonToContentVals(getResponse));

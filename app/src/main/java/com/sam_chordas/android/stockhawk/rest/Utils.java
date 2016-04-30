@@ -1,6 +1,9 @@
 package com.sam_chordas.android.stockhawk.rest;
 
 import android.content.ContentProviderOperation;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.net.Uri;
 import android.util.Log;
 
 import com.sam_chordas.android.stockhawk.data.StockHawkContract;
@@ -141,5 +144,14 @@ public class Utils {
             e.printStackTrace();
         }
         return builder.build();
+    }
+
+    /**
+     * Helper method that clears a table
+     * @param uri
+     * @param context
+     */
+    public static void clearTable(Uri uri, Context context){
+        context.getContentResolver().delete(uri, null, null);
     }
 }
