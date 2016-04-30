@@ -1,5 +1,6 @@
 package com.sam_chordas.android.stockhawk.rest;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -79,7 +80,9 @@ public class QuoteCursorAdapter extends CursorRecyclerViewAdapter<QuoteCursorAda
         Cursor c = getCursor();
         c.moveToPosition(position);
         String symbol = c.getString(c.getColumnIndex(StockHawkContract.QoutesColumns.SYMBOL));
-        mContext.getContentResolver().delete(StockHawkProvider.Quotes.withSymbol(symbol), null, null);
+        ContentResolver contentResolver = mContext.getContentResolver();
+        contentResolver.delete(StockHawkProvider.Quotes.withSymbol(symbol), null, null);
+        contentResolver.delete(StockHawkProvider.HistoricalData.withSymbol(symbol), null, null);
         notifyItemRemoved(position);
     }
 
