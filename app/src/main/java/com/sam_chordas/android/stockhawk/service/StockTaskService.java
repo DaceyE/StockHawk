@@ -28,7 +28,7 @@ import java.net.URLEncoder;
  * and is used for the initialization and adding task as well.
  */
 public class StockTaskService extends GcmTaskService {
-    private String LOG_TAG = "stockhawk " + StockTaskService.class.getSimpleName();
+    private static final String LOG_TAG = "stockhawk " + StockTaskService.class.getSimpleName();
 
     private OkHttpClient client = new OkHttpClient();
     private Context mContext;

@@ -10,7 +10,7 @@ import android.view.View;
  * Created by sam_chordas on 11/9/15.
  */
 public class RecyclerViewItemClickListener implements RecyclerView.OnItemTouchListener {
-    private String LOG_TAG = "stockhawk " + RecyclerViewItemClickListener.class.getSimpleName();
+    private static final String LOG_TAG = "stockhawk " + RecyclerViewItemClickListener.class.getSimpleName();
 
     @Override
     public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {

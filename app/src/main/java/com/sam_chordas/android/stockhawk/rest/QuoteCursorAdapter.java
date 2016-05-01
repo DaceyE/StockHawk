@@ -26,7 +26,7 @@ import com.sam_chordas.android.stockhawk.touch_helper.ItemTouchHelperViewHolder;
  */
 public class QuoteCursorAdapter extends CursorRecyclerViewAdapter<QuoteCursorAdapter.ViewHolder>
         implements ItemTouchHelperAdapter {
-    private String LOG_TAG = "stockhawk " + CursorRecyclerViewAdapter.class.getSimpleName();
+    private static final String LOG_TAG = "stockhawk " + CursorRecyclerViewAdapter.class.getSimpleName();
 
     private static Context mContext;
     private static Typeface robotoLight;

@@ -19,7 +19,7 @@ import com.sam_chordas.android.stockhawk.data.StockHawkProvider;
 public class DetailStockFragment extends Fragment {
 
     private static final String SYMBOL_KEY = "thesymbolkey";
-    private String LOG_TAG = "stockhawk " + DetailStockActivity.class.getSimpleName();
+    private static final String LOG_TAG = "stockhawk " + DetailStockActivity.class.getSimpleName();
 
     private String mSymbol;
     private View mRootView;

@@ -8,7 +8,7 @@ import com.sam_chordas.android.stockhawk.R;
 
 public class DetailStockActivity extends AppCompatActivity {
 
-    private String LOG_TAG = "stockhawk " + DetailStockActivity.class.getSimpleName();
+    private static final String LOG_TAG = "stockhawk " + DetailStockActivity.class.getSimpleName();
     public static final String SYMBOL = "com.sam_chordas.android.stockhawk.ui.SYMBOL";
 
     @Override

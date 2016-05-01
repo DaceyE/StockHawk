@@ -24,7 +24,7 @@ import org.json.JSONObject;
  */
 public class Utils {
 
-    private static String LOG_TAG = "stackhawk " + Utils.class.getSimpleName();
+    private static final String LOG_TAG = "stockhawk " + Utils.class.getSimpleName();
 
     public static boolean showPercent = true;
 

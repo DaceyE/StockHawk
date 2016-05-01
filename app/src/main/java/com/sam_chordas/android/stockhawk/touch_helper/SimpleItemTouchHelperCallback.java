@@ -9,7 +9,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
  * this class enables swipe to delete in RecyclerView
  */
 public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
-    private String LOG_TAG = "stockhawk " + SimpleItemTouchHelperCallback.class.getSimpleName();
+    private static final String LOG_TAG = "stockhawk " + SimpleItemTouchHelperCallback.class.getSimpleName();
 
     private final ItemTouchHelperAdapter mAdapter;
     public static final float ALPHA_FULL = 1.0f;
