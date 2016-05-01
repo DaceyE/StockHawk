@@ -9,7 +9,11 @@ import android.util.Log;
 import com.sam_chordas.android.stockhawk.data.StockHawkContract;
 import com.sam_chordas.android.stockhawk.data.StockHawkProvider;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,6 +27,11 @@ public class Utils {
     private static String LOG_TAG = "stackhawk " + Utils.class.getSimpleName();
 
     public static boolean showPercent = true;
+
+    /**
+     * The formatter used for fetching data from the HistoricalData table from YQL
+     */
+    public static final SimpleDateFormat YQL_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
     public static ArrayList quoteJsonToContentVals(String JSON) {
         ArrayList<ContentProviderOperation> batchOperations = new ArrayList<>();
@@ -154,4 +163,36 @@ public class Utils {
     public static void clearTable(Uri uri, Context context){
         context.getContentResolver().delete(uri, null, null);
     }
+
+    public static String getDate(){
+        String newDate = "";
+
+        //GregorianCalendar cal = new GregorianCalendar();
+
+        Date date = new Date();//cal.getTime();
+
+
+
+        return YQL_DATE_FORMAT.format(date);
+
+//        cal.add(GregorianCalendar.MONTH, -6);
+//        time = cal.getTime();
+//        newDate = format.format(time);
+//        Log.e(LOG_TAG, "New date: " + newDate);
+
+    }
+
+    /**
+     *
+     * @param numberOfMonthsAgo
+     * @return
+     */
+    public static String getPastDate(int numberOfMonthsAgo){
+        GregorianCalendar cal = new GregorianCalendar();
+        cal.add(GregorianCalendar.MONTH, numberOfMonthsAgo * (-1));
+
+        Date date = cal.getTime();
+        return YQL_DATE_FORMAT.format(date);
+    }
+
 }

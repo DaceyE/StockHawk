@@ -32,6 +32,19 @@ public class HistoricalDataTaskService extends GcmTaskService {
     private Context mContext;
     private StringBuilder mStoredSymbols = new StringBuilder();
 
+    /**
+     * The number of months to get historical data
+     */
+    private int period = 6;
+    private String startDate = Utils.getPastDate(period);
+    private String endDate = Utils.getDate();
+
+    /**
+     * A string used to construct the queries to YQL.
+     */
+    private String queryDate = " and startDate = \"" + startDate
+            + "\" and endDate = \"" + endDate +"\"";
+
     public HistoricalDataTaskService() {
     }
 
@@ -75,7 +88,7 @@ public class HistoricalDataTaskService extends GcmTaskService {
                             URLEncoder.encode("\"YHOO\",\"AAPL\",\"GOOG\",\"MSFT\")", "UTF-8"));
                     urlStringBuilder.append(URLEncoder
                             //TODO remove hard coded values
-                            .encode(" and startDate = \"2009-09-11\" and endDate = \"2009-10-10\"", "UTF-8"));
+                            .encode(queryDate, "UTF-8"));
 
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
@@ -93,7 +106,7 @@ public class HistoricalDataTaskService extends GcmTaskService {
                     urlStringBuilder.append(URLEncoder.encode(mStoredSymbols.toString(), "UTF-8"));
                     urlStringBuilder.append(URLEncoder
                             //TODO remove hard coded values
-                            .encode(" and startDate = \"2009-09-11\" and endDate = \"2009-10-10\"", "UTF-8"));
+                            .encode(queryDate, "UTF-8"));
 
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
@@ -106,7 +119,7 @@ public class HistoricalDataTaskService extends GcmTaskService {
                 urlStringBuilder.append(URLEncoder.encode("\"" + stockInput + "\")", "UTF-8"));
                 urlStringBuilder.append(URLEncoder
                         //TODO remove hard coded values
-                        .encode(" and startDate = \"2009-09-11\" and endDate = \"2009-10-10\"", "UTF-8"));
+                        .encode(queryDate, "UTF-8"));
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
