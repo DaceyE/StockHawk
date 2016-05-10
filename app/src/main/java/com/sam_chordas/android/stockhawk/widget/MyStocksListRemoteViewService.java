@@ -1,4 +1,4 @@
-package com.sam_chordas.android.stockhawk;
+package com.sam_chordas.android.stockhawk.widget;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
+import com.sam_chordas.android.stockhawk.R;
 import com.sam_chordas.android.stockhawk.data.StockHawkContract;
 import com.sam_chordas.android.stockhawk.data.StockHawkProvider;
 import com.sam_chordas.android.stockhawk.ui.DetailStockActivity;

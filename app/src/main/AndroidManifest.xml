@@ -60,7 +60,7 @@
                 android:value="com.sam_chordas.android.stockhawk.ui.MyStocksActivity" />
         </activity>
 
-        <receiver android:name=".MyStocksListWidget">
+        <receiver android:name=".widget.MyStocksListWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="com.sam_chordas.android.stockhawk.service.ACTION_DATA_UPDATED" />
@@ -72,7 +72,7 @@
         </receiver>
 
         <service
-            android:name=".MyStocksListRemoteViewService"
+            android:name=".widget.MyStocksListRemoteViewService"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.BIND_REMOTEVIEWS"></service>
