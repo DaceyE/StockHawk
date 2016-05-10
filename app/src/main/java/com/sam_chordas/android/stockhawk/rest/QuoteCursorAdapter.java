@@ -2,6 +2,7 @@ package com.sam_chordas.android.stockhawk.rest;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 import com.sam_chordas.android.stockhawk.R;
 import com.sam_chordas.android.stockhawk.data.StockHawkContract;
 import com.sam_chordas.android.stockhawk.data.StockHawkProvider;
+import com.sam_chordas.android.stockhawk.service.StockIntentService;
+import com.sam_chordas.android.stockhawk.service.StockTaskService;
 import com.sam_chordas.android.stockhawk.touch_helper.ItemTouchHelperAdapter;
 import com.sam_chordas.android.stockhawk.touch_helper.ItemTouchHelperViewHolder;
 
@@ -83,6 +86,11 @@ public class QuoteCursorAdapter extends CursorRecyclerViewAdapter<QuoteCursorAda
         ContentResolver contentResolver = mContext.getContentResolver();
         contentResolver.delete(StockHawkProvider.Quotes.withSymbol(symbol), null, null);
         contentResolver.delete(StockHawkProvider.HistoricalData.withSymbol(symbol), null, null);
+
+        Intent dataUpdatedIntent = new Intent(StockTaskService.ACTION_DATA_UPDATED)
+                .setPackage(mContext.getPackageName());
+        mContext.sendBroadcast(dataUpdatedIntent);
+
         notifyItemRemoved(position);
     }
 
