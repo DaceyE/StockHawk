@@ -1,7 +1,6 @@
 package com.sam_chordas.android.stockhawk.rest;
 
 import android.content.ContentProviderOperation;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
@@ -11,7 +10,6 @@ import com.sam_chordas.android.stockhawk.data.StockHawkProvider;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -116,6 +114,16 @@ public class Utils {
     }
 
     public static ContentProviderOperation buildBatchOperation(JSONObject jsonObject) {
+        try {
+            if (jsonObject.getString("Name").equals("null")) {
+                throw new UnsupportedOperationException("Symbol does not map to a name on yql: "
+                        + jsonObject.getString("symbol"));
+            }
+        } catch (JSONException j) {
+            j.printStackTrace();
+            Log.e(LOG_TAG, "Unable to verify symbol.  App may crash", j);
+        }
+
         ContentProviderOperation.Builder builder = ContentProviderOperation.newInsert(
                 StockHawkProvider.Quotes.CONTENT_URI);
         try {
@@ -157,20 +165,20 @@ public class Utils {
 
     /**
      * Helper method that clears a table
+     *
      * @param uri
      * @param context
      */
-    public static void clearTable(Uri uri, Context context){
+    public static void clearTable(Uri uri, Context context) {
         context.getContentResolver().delete(uri, null, null);
     }
 
-    public static String getDate(){
+    public static String getDate() {
         String newDate = "";
 
         //GregorianCalendar cal = new GregorianCalendar();
 
         Date date = new Date();//cal.getTime();
-
 
 
         return YQL_DATE_FORMAT.format(date);
@@ -183,11 +191,10 @@ public class Utils {
     }
 
     /**
-     *
      * @param numberOfMonthsAgo
      * @return
      */
-    public static String getPastDate(int numberOfMonthsAgo){
+    public static String getPastDate(int numberOfMonthsAgo) {
         GregorianCalendar cal = new GregorianCalendar();
         cal.add(GregorianCalendar.MONTH, numberOfMonthsAgo * (-1));
 
