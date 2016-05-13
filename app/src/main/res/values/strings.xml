@@ -13,4 +13,5 @@
     <string name="title_activity_detail_stock">DetailStockActivity</string>
     <string name="symbol_input_error">No stock found with symbol: \n\t\t</string>
     <string name="no_stocks_message">You aren\'t watching any stocks right now.\nHit the + to add some.</string>
+    <string name="no_network_message">There is no network avail</string>
 </resources>
