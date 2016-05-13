@@ -22,4 +22,12 @@
         fab:fab_type="normal"
         fab:layout_anchor="recycler_view"
         fab:layout_anchorGravity="bottom | end" />
+
+    <TextView
+        android:id="@+id/no_stocks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:text="@string/no_stocks_message"
+        android:textSize="18sp" />
 </FrameLayout>
