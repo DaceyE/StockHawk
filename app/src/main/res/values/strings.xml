@@ -1,17 +1,24 @@
 <resources>
     <string name="app_name">Stock Hawk</string>
 
-    <string name="action_example">Example action</string>
-
+    <!-- ActionBar Strings -->
     <string name="action_settings">Settings</string>
     <string name="action_change_units">Change Units</string>
+
+    <!-- MyStocksActivity -->
     <string name="symbol_search">Symbol Search</string>
+    <string name="toast_symbol_repeated">This stock is already saved!</string>
+    <string name="toast_symbol_input_error">No stock found with symbol: \n\t\t</string>
+    <string name="toast_network">Uh-oh! This app requires an internet connection</string>
+
     <string name="content_test">Search for a Stock Symbol</string>
     <string name="input_hint">FB</string>
     <string name="input_prefill"></string>
-    <string name="network_toast">Uh-oh! This app requires an internet connection</string>
     <string name="title_activity_detail_stock">DetailStockActivity</string>
-    <string name="symbol_input_error">No stock found with symbol: \n\t\t</string>
     <string name="no_stocks_message">You aren\'t watching any stocks right now.\nHit the + to add some.</string>
     <string name="no_network_message">No network available.\nStock values might be old!</string>
+
+    <!-- Detail -->
+    <string name="close_data_set_label">close</string>
+
 </resources>

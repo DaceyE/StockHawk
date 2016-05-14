@@ -141,7 +141,7 @@ public class StockTaskService extends GcmTaskService {
                                 .setPackage(mContext.getPackageName());
                         mContext.sendBroadcast(dataUpdatedIntent);
                     } catch (UnsupportedOperationException e) {
-                        postToast(mContext.getString(R.string.symbol_input_error)
+                        postToast(mContext.getString(R.string.toast_symbol_input_error)
                                 + params.getExtras().getString("symbol"));
                     }
                 } catch (RemoteException | OperationApplicationException e) {

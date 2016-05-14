@@ -251,7 +251,8 @@ public class DetailStockFragment extends Fragment {
             e.printStackTrace();
         }
 
-        LineDataSet closeDataSet = new LineDataSet(closeEntries, "close");
+        LineDataSet closeDataSet =
+                new LineDataSet(closeEntries, getString(R.string.close_data_set_label));
         //Formats the look
         closeDataSet.setDrawCircles(false);
         closeDataSet.setDrawFilled(true);
