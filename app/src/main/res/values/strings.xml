@@ -18,6 +18,8 @@
     <string name="no_stocks_message">You aren\'t watching any stocks right now.\nHit the + to add some.</string>
     <string name="no_network_message">No network available.\nStock values might be old!</string>
 
+    <string name="content_description_fab">Add a stock</string>
+
     <!-- Detail -->
     <string name="close_data_set_label">close</string>
 
