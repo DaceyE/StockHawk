@@ -13,8 +13,8 @@
 
     <string name="content_test">Search for a Stock Symbol</string>
     <string name="input_hint">FB</string>
-    <string name="input_prefill"></string>
-    <string name="title_activity_detail_stock">DetailStockActivity</string>
+    <string name="input_prefill" translatable="false"></string>
+    <string name="title_activity_detail_stock" translatable="false">DetailStockActivity</string>
     <string name="no_stocks_message">You aren\'t watching any stocks right now.\nHit the + to add some.</string>
     <string name="no_network_message">No network available.\nStock values might be old!</string>
 
