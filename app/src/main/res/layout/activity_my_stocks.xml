@@ -27,6 +27,19 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/no_stocks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:text="@string/no_stocks_message"
+            android:textSize="18sp"
+            android:visibility="gone" />
     </LinearLayout>
 
     <com.melnykov.fab.FloatingActionButton
@@ -35,8 +48,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right|end"
         android:layout_margin="16dp"
-        android:src="@drawable/ic_add_white_24dp"
         android:contentDescription="@string/content_description_fab"
+        android:src="@drawable/ic_add_white_24dp"
         fab:fab_colorNormal="@color/material_blue_500"
         fab:fab_colorPressed="@color/material_blue_600"
         fab:fab_colorRipple="@color/ripple"
@@ -45,16 +58,4 @@
         fab:layout_anchor="recycler_view"
         fab:layout_anchorGravity="bottom | end | right" />
 
-    <TextView
-        android:id="@+id/no_stocks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingEnd="@dimen/activity_horizontal_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingStart="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:text="@string/no_stocks_message"
-        android:textSize="18sp"
-        android:visibility="gone" />
 </FrameLayout>
