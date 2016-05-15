@@ -133,6 +133,10 @@ public class StockTaskService extends GcmTaskService {
                                 null, null);
                     }
 
+                    if(params.getTag().equals("periodic")){
+                        Utils.clearTable(StockHawkProvider.Quotes.CONTENT_URI, mContext);
+                    }
+
                     try {
                         mContext.getContentResolver().applyBatch(StockHawkProvider.AUTHORITY,
                                 Utils.quoteJsonToContentVals(getResponse));
