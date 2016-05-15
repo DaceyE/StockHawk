@@ -22,5 +22,6 @@
 
     <!-- Detail -->
     <string name="close_data_set_label">close</string>
+    <string name="no_data_message">No historical data is available at this moment</string>
 
 </resources>

@@ -1,10 +1,14 @@
 package com.sam_chordas.android.stockhawk.ui;
 
 import android.app.Fragment;
+import android.app.LoaderManager;
+import android.content.CursorLoader;
+import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +37,7 @@ import java.util.List;
 /**
  *
  */
-public class DetailStockFragment extends Fragment {
+public class DetailStockFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final String LOG_TAG = "stockhawk " + DetailStockActivity.class.getSimpleName();
 
@@ -56,6 +60,7 @@ public class DetailStockFragment extends Fragment {
         mRootView = inflater.inflate(R.layout.fragment_detail_stock, container, false);
 
         mLineChart = ((LineChart) mRootView.findViewById(R.id.chart1));
+        mLineChart.setNoDataText(getString(R.string.no_data_message));
 
         if (savedInstanceState != null) {
             mSymbol = savedInstanceState.getString(SYMBOL_KEY);
@@ -65,11 +70,11 @@ public class DetailStockFragment extends Fragment {
     }
 
     @Override
-    public void onStart() {
+    public void onActivityCreated(Bundle bundle) {
         super.onStart();
 
-        if (mSymbol != null && getView() != null) {
-            setUp();
+        if (mSymbol != null) {
+            getLoaderManager().initLoader(0, null, this);
         }
     }
 
@@ -91,14 +96,7 @@ public class DetailStockFragment extends Fragment {
     /**
      * Sets up the chart.  Uses many of the helper methods below
      */
-    private void setUp() {
-        Cursor cursor = getActivity().getContentResolver()
-                .query(StockHawkProvider.HistoricalData.CONTENT_URI,
-                        new String[]{StockHawkContract.HistoricalDataColumns.CLOSE,
-                                StockHawkContract.HistoricalDataColumns.Date},
-                        StockHawkContract.HistoricalDataColumns.SYMBOL + " = ?  ", //whereClause
-                        new String[]{mSymbol}, //whereArgs, get the data for symbol
-                        null);
+    private void setUp(Cursor cursor) {
 
         //Sets the mDate field, which is used be various methods
         setDate(cursor);
@@ -269,4 +267,39 @@ public class DetailStockFragment extends Fragment {
         return new LineData(x, sets);
     }
 
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle bundle) {
+        Log.i(LOG_TAG, "onCreateLoader");
+        switch (id) {
+            case 0:
+                return new CursorLoader(getActivity(),
+                        StockHawkProvider.HistoricalData.CONTENT_URI,
+                        new String[]{StockHawkContract.HistoricalDataColumns.CLOSE,
+                                StockHawkContract.HistoricalDataColumns.Date},
+                        StockHawkContract.HistoricalDataColumns.SYMBOL + " = ?  ", //whereClause
+                        new String[]{mSymbol}, //whereArgs, get the data for symbol
+                        null);
+            default:
+                return null;
+        }
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+        String cursorCount = cursor != null ? Integer.toString(cursor.getCount()) : "null";
+        Log.i(LOG_TAG, "onLoadFinished, cursor count: " + cursorCount);
+        cursor.setNotificationUri(getActivity().getContentResolver(),
+                StockHawkProvider.HistoricalData.CONTENT_URI);
+
+        //If there is data set the chart up
+        if (cursor.getCount() != 0) {
+            Log.i(LOG_TAG, "setUp executed");
+            setUp(cursor);
+        }
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        Log.i(LOG_TAG, "onLoaderReset");
+    }
 }
