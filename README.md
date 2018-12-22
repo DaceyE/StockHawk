@@ -1,4 +1,4 @@
-# Stockhawk <img src="https://github.com/DaceyE/StockHawk/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" height="48px" />
+# Stock Hawk <img src="https://github.com/DaceyE/StockHawk/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" height="48px" />
 
 <div>
   <img height="400" src="https://ennis.000webhostapp.com/portfolio/stock%20hawk/zr/Screenshot_2018-12-19-21-21-57.png" />
