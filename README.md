@@ -1,8 +1,16 @@
 # Stockhawk <img src="https://github.com/DaceyE/StockHawk/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" height="48px" />
 
+<div>
+  <img height="400" src="https://ennis.000webhostapp.com/portfolio/stock%20hawk/zr/Screenshot_2018-12-19-21-21-57.png" />
+  <img height="400" hspace="20"  src="https://ennis.000webhostapp.com/portfolio/stock%20hawk/zr/Screenshot_2018-12-17-10-37-47.png" />
+</div>
+&nbsp
+<img height="400" src="https://ennis.000webhostapp.com/portfolio/stock%20hawk/kf/Screenshot_2018-12-19-20-07-20.png" />
+
+**S**ee the bottom of this readme for more images.
 
 ## Summary
-**T**his app is about doing rudimentary debugging on already existing application written by a different developer and adding the final polish to an app before release.  Additional features are added like a widget, graphs of stock data, and persisting stocks to display how they’ve changed over time.  There are a number of libraries used in this app and I’m not fond of all of them, but using software selected by a different developer was an import part of this project.
+**T**his app is about doing rudimentary debugging on already existing application written by a different developer and adding the final polish to an app before release.  Additional features are added like a widget, graphs of stock data, and persisting stocks to display how they’ve changed over time.  Adding messages about loss of network connectivity, out of date data, and invalid user input.  There are a number of libraries used in this app and I’m not fond of all of them, but using software selected by a different developer was an import part of this project.
 
 
 ## Specifications
@@ -22,12 +30,35 @@
 
 
 ## Issues
-•  Demo videos, images, and links to download app are forthcoming.  
-•  API may or may not still be functional.  
+•  Yahoo's public API is no longer available.  May replace it or make a fake verson.  Unless I use this app to demonstrate adding Android architecture components to an old app this likely won't happen.
 •  Repo should be merged with the other demo applications for convenience.  
 •  Upload Java style guide used.  
 •  Upload Git style guide used.  
+•  The above guides should be written as an html doc styled like the Android developer docs.  
+•  Add RTL images.  
+•  Add better app widget images.  
 
+
+## Images
+**S**creenshots are from a API 16 ZTE Reef and a 7th generation Kindle Fire because device diversity is important.
+
+<div>
+  <img height="240" src="https://ennis.000webhostapp.com/portfolio/stock%20hawk/zr/Screenshot_2018-12-17-10-36-46.png" />
+  <img height="240" hspace="20"  src="https://ennis.000webhostapp.com/portfolio/stock%20hawk/zr/Screenshot_2018-12-19-10-18-51.png" />
+</div>
+&nbsp
+<div>
+  <img height="640" src="https://ennis.000webhostapp.com/portfolio/stock%20hawk/kf/Screenshot_2018-12-19-21-11-58.png" />
+  <img height="400" hspace="20"  src="https://ennis.000webhostapp.com/portfolio/stock%20hawk/zr/Screenshot_2018-12-19-21-25-00.png" />
+</div>
+&nbsp
+<img height="400" src="https://ennis.000webhostapp.com/portfolio/stock%20hawk/kf/Screenshot_2018-12-19-21-12-14.png" />
+&nbsp
+
+<div>
+  <img height="640" src="https://ennis.000webhostapp.com/portfolio/stock%20hawk/kf/Screenshot_2018-12-19-20-06-49.png" />
+  <img height="300" src="https://raw.githubusercontent.com/DaceyE/StockHawk/master/app/src/main/mystocks_list_widget_preview-web.png" />
+</div>
 
 
 [launcher]: https://github.com/DaceyE/StockHawk/blob/master/app/src/main/res/mipmap-mdpi/ic_launcher.png
